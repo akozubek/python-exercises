@@ -9,13 +9,9 @@ def isvalid2(passphrase):
     canonic_words = [''.join(sorted(w)) for w in words]
     return len(set(canonic_words)) == len(canonic_words)
 
-def countvalid(filename, fun):
-    count = 0
+def countvalid(filename, valid_function):
     with open(filename) as file:
-        for line in file:
-            if fun(line):
-                 count += 1
-    return count
+        return sum([1 for line in file if valid_function(line) ])
 
 
 class Test(unittest.TestCase):
@@ -25,7 +21,6 @@ class Test(unittest.TestCase):
         self.assertEqual(isvalid('aa bb cc dd aa'), False)
     def test3(self):
         self.assertEqual(isvalid('aa bb cc dd aaa'), True)
-
 
     def test21(self):
         self.assertEqual(isvalid2('abcde fghij'), True)
