@@ -1,11 +1,10 @@
 import unittest
 
 def maze(moves):
-    length = len(moves)
     index = 0
     steps = 0
 
-    while index >= 0 and index < length:
+    while 0 <= index < len(moves):
         instruction = moves[index]
         steps += 1
         moves[index] += 1
@@ -18,7 +17,7 @@ def maze2(moves):
     index = 0
     steps = 0
 
-    while index >= 0 and index < length:
+    while 0 <= index < len(moves):
         offset = moves[index]
         steps += 1
         if offset >= 3:
