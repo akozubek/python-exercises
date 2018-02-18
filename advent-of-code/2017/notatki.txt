@@ -1,0 +1,5 @@
+Day 7: Poprawić czytelność kodu (jest obrzydliwy)
+Składnia dla słowników w Pythonie
+
+Day 8: rozwiązania na Reddit są fajne (eval, operatory jako funkcje, etc.)
+Spróbować napisać je samodzielnie
