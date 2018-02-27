@@ -8,7 +8,7 @@ def programs(pipes):
     for pipe in pipes: 
         pipe_spec = pipe.split()
         program = int(pipe_spec[0])
-        adjacent_programs = { int(p.replace(',','')) for p in pipe_spec[2:] }
+        adjacent_programs = map(lambda x: int(x.rstrip(',')), pipe_spec[2:])
         connected[program] = connected[program].union(adjacent_programs)
         for a in connected[program]:
             connected[a] = connected[a].union(connected[program])
@@ -25,6 +25,5 @@ class Test(unittest.TestCase):
 
 with open("day12.txt") as file:
     print("Result:", programs(file.readlines()))
-    pass
 
 unittest.main()
