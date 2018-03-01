@@ -18,23 +18,24 @@ def move(layer):
         else: 
             layer[index - 1] = -1
 
+def create_layers(spec):
+    layers = list()
+    index = 0
+    for line in spec:
+        [layer, depth] = [ int(l) for l in (line.split(": ")) ]
+        for i in range(index, layer): 
+            layers.append([])
+            index += 1
+        layers.append([0] * depth)
+        layers[layer][0] = 1
+        index += 1
+    return layers
+
 def severity(spec):
-   layers = list()
-   index = 0
-   for line in spec:
-       [layer, depth] = [ int(l) for l in (line.split(": ")) ]
-       print(layer, depth)
-       for i in range(index, layer): 
-           layers.append([])
-           index += 1
-       layers.append([0] * depth)
-       layers[layer][0] = 1
-       index += 1
+   layers = create_layers(spec)
 
    sev = 0
    for i in range(0, len(layers)):
-       print("Picosecond", i)
-       print(layers)
        if len(layers[i]) > 0 and layers[i][0] != 0:
            # caught!
            sev += i * len(layers[i])
@@ -43,23 +44,6 @@ def severity(spec):
            move(l)
    return sev
 
-
-def create_layers(spec):
-    layers = list()
-    index = 0
-    for line in spec:
-        [layer, depth] = [ int(l) for l in (line.split(": ")) ]
-#        print(layer, depth)
-#        print(index)
-        for i in range(index, layer): 
-            layers.append([])
-            index += 1
-        layers.append([0] * depth)
-#        print(layers)
-        layers[layer][0] = 1
-        index += 1
-    return layers
-
 def severity2(spec):
     # create layers
     layers = create_layers(spec)
@@ -67,20 +51,17 @@ def severity2(spec):
     delays = []
     picosecond = 0
     while True:
-        print("Picosecond:", picosecond)
         delays.append(picosecond)
-        # print("Delays:", delays)
         # check if any delays are caught
         for d in delays[:]:
-            # gdzie w tej picosekundzie jest pakiet wyruszajacy z opoznieniem
-            # d
+            # where in this picosecond is the packet with delay d
             position = picosecond - d
             if position == len(layers):
-                 # znalezlismy?
+                 # finally found it!
                  return d
            
             if len(layers[position]) > 0 and layers[position][0] != 0:
-                # caught!
+                # caught! => remove
                 delays.remove(d)
 
         # move scanners
@@ -102,7 +83,6 @@ with open("day13.txt") as file:
     print("Result:", severity(file.readlines()))
 
 with open("day13.txt") as file:
-     print("Result:", severity2(file.readlines()))
-     pass
+    print("Result:", severity2(file.readlines()))
 
 unittest.main()
