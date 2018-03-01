@@ -3,3 +3,7 @@ Składnia dla słowników w Pythonie
 
 Day 8: rozwiązania na Reddit są fajne (eval, operatory jako funkcje, etc.)
 Spróbować napisać je samodzielnie
+
+Day 13: bardzo piekne rozwiązanie na Reddit. Chyba najfajniejsze zadanie. A
+moje rozwiazanie takie sobie.
+Jedna z sugestii: chińskie twierdzenie o resztach.
