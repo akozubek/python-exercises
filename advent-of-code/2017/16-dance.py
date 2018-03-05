@@ -10,18 +10,33 @@ def dance(programs, moves):
         elif move.startswith('x'):
              p1 = int(move[1:].split('/')[0])
              p2 = int(move[1:].split('/')[1])
-             l1 = programs_list[p1]
-             l2 = programs_list[p2]
-             programs_list[p1] = l2
-             programs_list[p2] = l1
+             letter1 = programs_list[p1]
+             letter2 = programs_list[p2]
+             programs_list[p1] = letter2
+             programs_list[p2] = letter1
         elif move.startswith('p'):
-             l1 = move[1:].split('/')[0]
-             l2 = move[1:].split('/')[1]
-             p1 = programs_list.index(l1)
-             p2 = programs_list.index(l2)
-             programs_list[p1] = l2
-             programs_list[p2] = l1
+             letter1 = move[1:].split('/')[0]
+             letter2 = move[1:].split('/')[1]
+             p1 = programs_list.index(letter1)
+             p2 = programs_list.index(letter2)
+             programs_list[p1] = letter2
+             programs_list[p2] = letter1
     return ''.join(programs_list)
+
+def dance2(programs, moves):
+    orig_programs = programs
+    limit = 1000000000 
+    for i in range(0, limit):
+        programs = dance(programs, moves)
+        if orig_programs == programs:
+             break
+    print("Period is", i+1)
+    remainder = limit % (i+1)
+    print("Remainder is ", remainder)
+
+    for i in range(0, remainder):
+        programs = dance(programs, moves)
+    return programs
 
 class Test(unittest.TestCase):
     def test1(self):
@@ -30,4 +45,8 @@ class Test(unittest.TestCase):
 with open("day16.txt") as file:
    for line in file:
        print("Result", dance('abcdefghijklmnop', line))
+
+with open("day16.txt") as file:
+   for line in file:
+       print("Result2", dance2('abcdefghijklmnop', line))
 unittest.main()
