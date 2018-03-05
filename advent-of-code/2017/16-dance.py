@@ -8,19 +8,14 @@ def dance(programs, moves):
              steps = len(programs_list) - int(move[1:])
              programs_list = programs_list[steps:] + programs_list[:steps]
         elif move.startswith('x'):
-             p1 = int(move[1:].split('/')[0])
-             p2 = int(move[1:].split('/')[1])
-             letter1 = programs_list[p1]
-             letter2 = programs_list[p2]
-             programs_list[p1] = letter2
-             programs_list[p2] = letter1
+             p1, p2 = map(int, move[1:].split('/'))
+             programs_list[p1], programs_list[p2] = programs_list[p2], programs_list[p1] 
+
         elif move.startswith('p'):
-             letter1 = move[1:].split('/')[0]
-             letter2 = move[1:].split('/')[1]
-             p1 = programs_list.index(letter1)
-             p2 = programs_list.index(letter2)
-             programs_list[p1] = letter2
-             programs_list[p2] = letter1
+             l1, l2 = move[1:].split('/')
+             p1 = programs_list.index(l1)
+             p2 = programs_list.index(l2)
+             programs_list[p1], programs_list[p2] = programs_list[p2], programs_list[p1] 
     return ''.join(programs_list)
 
 def dance2(programs, moves):
