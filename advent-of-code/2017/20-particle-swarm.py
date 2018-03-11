@@ -102,14 +102,11 @@ def count_particles(input):
 
     for p1 in remaining_particles:
         for p2 in range(p1+1, len(particles)):
-            print("Collision between", p1, p2)
             try:
                round_num = when_collide(p1, p2, particles, velocities, accelerations)
                collisions[round_num].add((p1,p2))
             except NoCollision:  
-               print("No collision")
                pass
-    print("Collisions:", collisions)
     
     # Remove colliding particles for each round
     for r in sorted(collisions):
