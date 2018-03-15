@@ -7,3 +7,17 @@ Spróbować napisać je samodzielnie
 Day 13: bardzo piekne rozwiązanie na Reddit. Chyba najfajniejsze zadanie. A
 moje rozwiazanie takie sobie.
 Jedna z sugestii: chińskie twierdzenie o resztach.
+
+Day 15: można użyć generatorów w Pythonie
+
+Day 18:
+collections.defaultdict
+
+Day 19:
+1) Python has complex numbers
+2) You can use complex numbers for 2D coordinate system
+
+Day 21:
+You need to define variable as global in a function. ??
+You can combine transpose and flip to get all allowed permutations
+Numpy has flip and rot90 built-in
