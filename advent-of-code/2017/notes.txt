@@ -21,3 +21,6 @@ Day 21:
 You need to define variable as global in a function. ??
 You can combine transpose and flip to get all allowed permutations
 Numpy has flip and rot90 built-in
+
+Day 22:
+Complex number for turns (again!)
