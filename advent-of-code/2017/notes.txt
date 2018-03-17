@@ -24,3 +24,6 @@ Numpy has flip and rot90 built-in
 
 Day 22:
 Complex number for turns (again!)
+
+Day 24:
+Shorter variable names are better in Python
