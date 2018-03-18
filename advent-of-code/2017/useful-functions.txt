@@ -1,0 +1,19 @@
+bin(number) -> Convert an integer number to a binary string prefixed with
+“0b”.
+
+bin(32)
+'0b100000'
+
+int(str, scale) -> Return an integer object constructed from a number or
+string x
+int('100000', 2) 
+32
+
+Przypisania:
+l1, l2 = move[1:].split('/')
+p1, p2 = map(int, move[1:].split('/'))
+
+Zamiana in place!
+programs_list[p1], programs_list[p2] = programs_list[p2], programs_list[p1] 
+
+enumerate(x): returns index and value
