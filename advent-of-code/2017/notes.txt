@@ -27,3 +27,6 @@ Complex number for turns (again!)
 
 Day 24:
 Shorter variable names are better in Python
+
+Day 26:
+Generators Tutorial: http://www.dabeaz.com/generators-uk/GeneratorsUK.pdf
