@@ -1,0 +1,71 @@
+How to read inputs in Python
+============================
+I. Useful functions
+-------------------
+
+open() - opens a file to read, write, append, etc. Returns a filehandle
+
+Example:
+open("day1.txt")
+
+You can give an optional argument to open() specify open mode 
+(r-read,w-write+truncate, a-write+append, b-binary mode, etc.). 
+Default mode: r - read a text file
+open("day1.txt", 'r')
+
+f.read() - reads the entire contents of the file as string. 
+f.read(size) - reads content up to the size variable.
+
+f.readline() - reads a single line from the file, a newline is left at the end
+
+f.readlines() - list all lines from the file and puts them into a list, the
+newlines are left at the end of each line
+
+s.strip() - removes whitespace characters (including newlines) from the string
+s.strip('abc') - removes given trailing and leading characters from the string
+s.lstrip(), s.rstrip() - remove whitespace from left/right side of the
+  string
+In Java strip = trim, ltrim, rtrim.
+
+s.splitlines() - Return a list of the lines in the string, breaking at line boundaries. Line
+breaks are not included in the resulting list unless keepends is given and
+true
+ 
+s.split() - Returns a list of words in the string; takes optional separator as
+delimiter. No delimiter specified: returns string split at whitespace. Note:
+different behavior when it comes to empty strings for default and non-default
+delimiter (what about split(' ')?)
+
+II. Patterns
+------------
+
+1. Just assign it to a variable
+inp = X
+
+2. Open file with with-stmt
+with open("day1.txt") as f:
+    ...
+
+3. Open file without with-stmt (OK for AoC)
+inp = open("day1.txt").read()
+
+4. Iterating over file (for loop or list comprehension)
+a) ... for line in f.read().strip().striplines()
+b) ... for line in f
+c) iterate with a for loop
+for line in f:
+   print(line)
+You can loop over lines in a file. Newlines are left at the end
+
+d) list(f) makes a list of all lines
+e) ... for line in f.readlines()
+
+5. You can read from sys.stdin
+for line in sys.stdin: 
+    result_1 += soln(line.strip(), identity)
+    result_2 += soln(line.strip(), counter_hash)
+
+6. There is package for reading input for AoC
+from aocd import data
+https://github.com/wimglenn/advent-of-code-data
+
