@@ -4,7 +4,7 @@ import csv
 
 input = 'day2.txt'
 
-def checksum(filename):
+def checksum_original(filename):
     sum = 0
     with open(filename) as file:
         reader = csv.reader(file, delimiter='\t')
@@ -32,11 +32,22 @@ def checksum2(filename):
             sum = sum + c_sum 
     return sum
 
+def checksum(filename):
+    with open(filename) as f:
+        lines = [list(map(int, line.split())) for line in f]
+        return sum(max(l) - min(l) for l in lines)
+
+# TODO: Part 2 with itertools
+
 class Test(unittest.TestCase):
     def test1(self):
         self.assertEqual(checksum('day2-test.txt'), 18)
     def test2(self):
         self.assertEqual(checksum2('day2-test2.txt'), 9)
+    def test1_input(self):
+        self.assertEqual(checksum('day2.txt'), 43074)
+    def test1_input(self):
+        self.assertEqual(checksum2('day2.txt'), 280)
 
 print("Result:", checksum(input))
 print("Result 2:", checksum2(input))
